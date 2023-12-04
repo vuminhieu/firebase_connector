@@ -18,33 +18,40 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 console.log(database)
 const locationRef = ref(database, "latitude");
-console.log('latitude' + locationRef)
-get(locationRef)
-    .then((snapshot) => {
-        if (snapshot.val()) {
-            const locationData = snapshot.val();
-            console.log('Dữ liệu vị trí hiện tại:', locationData);
-            document.getElementById('heartRate').innerHTML = `Nhịp Tim: ${locationData} bpm`;
-        } else {
-            console.log('Không có dữ liệu vị trí.');
-        }
-    })
-    .catch((error) => {
-        console.error('Lỗi khi đọc dữ liệu vị trí:', error);
-    });
-
 const locationRef2 = ref(database, "longitude");
+console.log('latitude' + locationRef)
 console.log('longitude' + locationRef)
-get(locationRef2)
-    .then((snapshot) => {
-        if (snapshot.val()) {
-            const locationData = snapshot.val();
-            console.log('Dữ liệu vị trí hiện tại:', locationData);
-            document.getElementById('breathRate').innerHTML = `Nhịp Tim: ${locationData} %`;
+
+async function fetchData() {
+    var locationData = [];
+
+    try {
+        const snapshot1 = await get(locationRef);
+        if (snapshot1.val()) {
+            const heartRateData = snapshot1.val();
+            console.log('Data - Latitude:', heartRateData);
+            document.getElementById('heartRate').innerHTML = `Nhịp Tim: ${heartRateData} bpm`;
+            locationData.unshift(heartRateData)
         } else {
-            console.log('Không có dữ liệu vị trí.');
+            console.log('Null data - Latitude.');
         }
-    })
-    .catch((error) => {
-        console.error('Lỗi khi đọc dữ liệu vị trí:', error);
-    });
+
+        const snapshot2 = await get(locationRef2);
+        if (snapshot2.val()) {
+            const breathRateData = snapshot2.val();
+            console.log('Data - Longitude:', breathRateData);
+            document.getElementById('breathRate').innerHTML = `Sp02: ${breathRateData} %`;
+            locationData.unshift(breathRateData)
+        } else {
+            console.log('Null data - Longitude.');
+        }
+
+        console.log('Location Data:', locationData);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+
+}
+
+// Gọi hàm fetchData để thực hiện các tác vụ
+fetchData();
