@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đo Nhịp Tim và Nhịp Thở</title>
+    <title>Đo Nhịp Tim và SPO2</title>
     <link rel="stylesheet" href="src/styles.css">
     <script src="./src/firebaseScript.js" defer type="module"></script>
 </head>
@@ -16,10 +16,10 @@
 </header>
 
 <div class="container">
-    <h2>Đo Nhịp Tim và Nhịp Thở</h2>
+    <h2>Đo Nhịp Tim và SPO2</h2>
     <div class="heart-rate" id="heartRate">Nhịp Tim: Loading...</div>
-    <div class="breath-rate" id="breathRate">Nhịp Thở: Loading...</div>
-    <button onclick="startMeasurement()">Lưu thông tin</button>
+    <div class="breath-rate" id="breathRate">SPO2: Loading...</div>
+    <button id="startButton">Lưu thông tin</button>
 
     <div class="image-text-container">
         <img src="image/nhip_tim.jpg" alt="Heart">
