@@ -29,14 +29,13 @@ async function fetchData() {
         const snapshot1 = await get(locationRef);
         if (snapshot1.val()) {
             const heartRateData = snapshot1.val();
-            console.log('Data - Latitude:', heartRateData);
+            console.log('Data - heartRate:', heartRateData);
             document.getElementById('heartRate').innerHTML = `Nhịp Tim: ${heartRateData} bpm`;
             const snapshot2 = await get(locationRef2);
             if (snapshot2.val()) {
                 const breathRateData = snapshot2.val();
-                console.log('Data - Longitude:', breathRateData);
+                console.log('Data - breathRate:', breathRateData);
                 document.getElementById('breathRate').innerHTML = `SPO2: ${breathRateData} %`;
-                // locationData.unshift(breathRateData)
                 const snapshot3 = await get(locationRefList);
                 const dataList = snapshot3.val() || []
                 console.log('dsadfadsf', dataList);
@@ -55,8 +54,6 @@ async function fetchData() {
                 console.log('Null data - Longitude.');
             }
 
-            // console.log('Location Data:', locationData);
-            // locationData.unshift(heartRateData)
         } else {
             console.log('Null data - Latitude.');
         }
@@ -67,5 +64,4 @@ async function fetchData() {
 
 }
 
-// Gọi hàm fetchData để thực hiện các tác vụ
 fetchData();
