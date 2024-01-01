@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đo Nhịp Tim và SPO2</title>
     <link rel="stylesheet" href="src/styles.css">
-    <script src="./src/firebaseScript.js" defer type="module"></script>
+<!--    <script src="./src/firebaseScript.js" defer type="module"></script>-->
 </head>
 <body>
 
@@ -17,8 +17,8 @@
 
 <div class="container">
     <h2>Đo Nhịp Tim và SPO2</h2>
-    <div class="heart-rate" id="heartRate">Nhịp Tim: Loading...</div>
-    <div class="breath-rate" id="breathRate">SPO2: Loading...</div>
+    <div class="heart-rate" id="heartRate">Nhịp Tim: 0bpm.</div>
+    <div class="breath-rate" id="breathRate">SPO2: 0%.</div>
     <button id="startButton">Lưu thông tin</button>
 
     <div class="image-text-container">
@@ -30,7 +30,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.6.3/firebase-database.js"></script>
 
 <!-- Nhúng file JavaScript của bạn -->
-<script type="module" src="src/firebaseScript.js"></script>
+<!--<script type="module" src="src/firebaseScript.js"></script>-->
 
 <!-- Sử dụng hàm getLocationData từ file JavaScript -->
 <script type="module">
